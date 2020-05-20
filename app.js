@@ -16,6 +16,10 @@ app.post('/book',async (req,res)=>{
   })
 })
 
+app.get('/',(req,res)=>{
+  res.send('no content here');
+})
+
 app.listen(3000,()=>{
   console.log('restro-booking!!!');
 })
