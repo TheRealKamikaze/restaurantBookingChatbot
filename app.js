@@ -11,7 +11,8 @@ mongoose.connect('mongodb+srv://tarun:QyDqfwsy7sulkeIo@cluster0-a0vpp.mongodb.ne
 
 app.post('/book',async (req,res)=>{
   if(req.body.queryResult.intent.displayName==='bookTable'){
-    console.log('in')
+    // console.log('in')
+    // console.log(req.body.queryResult.outputContexts)
     let date = req.body.queryResult.parameters.date;
     let pos = req.body.queryResult.parameters.date.indexOf('T');
     let saveDate = date.substring(0,pos);
@@ -44,7 +45,8 @@ app.post('/book',async (req,res)=>{
               ]
             }
           }
-        ]
+        ],
+        "outputContexts": req.body.queryResult.outputContexts
       }
       res.json(response)
     }
