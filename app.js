@@ -10,6 +10,8 @@ mongoose.connect('mongodb+srv://tarun:QyDqfwsy7sulkeIo@cluster0-a0vpp.mongodb.ne
 })
 
 app.post('/book',async (req,res)=>{
+  console.log(req.body.queryResult);
+  console.log(req.body.queryResult.outputContexts)
   if(req.body.queryResult.intent.displayName==='bookTable'){
     // console.log('in')
     // console.log(req.body.queryResult.outputContexts)
@@ -57,6 +59,6 @@ app.get('/',(req,res)=>{
   res.send('no content here');
 })
 
-app.listen(process.env.PORT, process.env.IP,()=>{
+app.listen(3000, process.env.IP,()=>{
   console.log('restro-booking!!!');
 })
