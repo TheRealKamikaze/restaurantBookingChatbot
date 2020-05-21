@@ -43,7 +43,7 @@ app.post('/book',async (req,res)=>{
                   "items": [
                     {
                       "simpleResponse": {
-                        "textToSpeech": "this is a Google Assistant response"
+                        "textToSpeech": "Booking available, confirm booking?"
                       }
                     }
                   ]
@@ -70,7 +70,7 @@ app.post('/book',async (req,res)=>{
                   "items": [
                     {
                       "simpleResponse": {
-                        "textToSpeech": "this is a Google Assistant response"
+                        "textToSpeech": "Booking not available, please pick a different time."
                       }
                     }
                   ]
@@ -114,7 +114,21 @@ app.post('/book',async (req,res)=>{
               ]
             }
           }
-        ]
+        ],
+        "payload": {
+            "google": {
+              "expectUserResponse": true,
+              "richResponse": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "Booking confirmed, have a nice day."
+                    }
+                  }
+                ]
+              }
+            }
+          }
       }
       res.json(response)
     }
