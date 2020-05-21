@@ -20,7 +20,7 @@ app.post('/book',async (req,res)=>{
         let sessionId = session[session.length-1];
         let newUser = {
          name: name,
-         sessionId: sesionId
+         sessionId: sessionId
         };
         let addedUser = await user.create(newUser);
         res.json({"status": "done"});
