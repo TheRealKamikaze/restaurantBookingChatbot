@@ -58,8 +58,9 @@ app.post('/book',async (req,res)=>{
       let contexts = req.body.queryResult.outputContexts;
       let index = contexts.findIndex((context)=>{
         let someParts = context.name.split('/');
-        return someParts[someParts.length-1] ==='getName'
+        return someParts[someParts.length-1] === 'getName'
       })
+      console.log(index)
       let name = contexts[index].parameters.name;
       let date = contexts[index].parameters.date;
       let time = contexts[index].parameters.time[0];
