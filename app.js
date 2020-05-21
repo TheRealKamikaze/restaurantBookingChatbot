@@ -1,8 +1,9 @@
 const express = require('express'),
       app = express();
-      bodyParser = require('body-parser');
-      mongoose   = require('mongoose');
-      booking    = require('./models/booking')
+      bodyParser = require('body-parser'),
+      mongoose   = require('mongoose'),
+      booking    = require('./models/booking'),
+      user    = require('./models/user'),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
 mongoose.connect('mongodb+srv://tarun:QyDqfwsy7sulkeIo@cluster0-a0vpp.mongodb.net/minds2mentor?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}).catch((err)=>{
@@ -11,9 +12,19 @@ mongoose.connect('mongodb+srv://tarun:QyDqfwsy7sulkeIo@cluster0-a0vpp.mongodb.ne
 
 app.post('/book',async (req,res)=>{
   try{
-    console.log(req.body.queryResult);
-    console.log(req.body.queryResult.outputContexts)
-    if(req.body.queryResult.intent.displayName==='bookTable'){
+    // console.log(req.body.queryResult);
+    // console.log(req.body.queryResult.outputContexts)
+    if(req.body.queryResult.intent.displayName==='getname'){
+        let name = req.body.queryResult.parameters.name;
+        let session = req.body.session.split("/");
+        let sessionId = session[session.length-1];
+        let newUser = {
+         name: name,
+         sessionId: sesionId
+        };
+        let addedUser = await user.create(newUser);
+        res.json({"status": "done"});
+    }else if(req.body.queryResult.intent.displayName==='bookTable'){
       // console.log('in')
       // console.log(req.body.queryResult.outputContexts)
       let date = req.body.queryResult.parameters.date;
