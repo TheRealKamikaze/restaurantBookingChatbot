@@ -52,6 +52,21 @@ app.post('/book',async (req,res)=>{
       }
       res.json(response)
     }
+  }else if(req.body.queryResult.intent.displayName==='bookTable - yes'){
+    console.log(req.body.queryResult);
+    console.log(req.body.queryResult.outputContexts);
+    let response = {
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              "Booking confirmed, have a nice day."
+            ]
+          }
+        }
+      ]
+    }
+    res.json(response)
   }
 })
 
