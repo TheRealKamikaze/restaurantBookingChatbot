@@ -23,7 +23,36 @@ app.post('/book',async (req,res)=>{
          sessionId: sessionId
         };
         let addedUser = await user.create(newUser);
-        res.json({"status": "done"});
+        let response = {
+          "fulfillmentMessages": [
+            {
+              "text": {
+                "text": [
+                  "Booking confirmed, have a nice day."
+                ]
+              }
+            }
+          ],
+          "payload": {
+              "google": {
+                "expectUserResponse": true,
+                "richResponse": {
+                  "items": [
+                    {
+                      "simpleResponse": {
+                        "textToSpeech": "Booking confirmed, have a nice day."
+                      }
+                    }
+                  ],
+                  "suggestions": [
+                        {
+                          "title": "Book a table"
+                        }
+                  ]
+                }
+              }
+            }
+        }
     }else if(req.body.queryResult.intent.displayName==='bookTable'){
       // console.log('in')
       // console.log(req.body.queryResult.outputContexts)
