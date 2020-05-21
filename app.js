@@ -84,9 +84,9 @@ app.post('/book',async (req,res)=>{
     }
     res.json(response)
   }
-}.catch((err)=>{
+}).catch((err)=>{
   console.log(err);
-}))
+})
 
 app.get('/',(req,res)=>{
   res.send('no content here');
