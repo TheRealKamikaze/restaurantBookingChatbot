@@ -35,7 +35,21 @@ app.post('/book',async (req,res)=>{
                 ]
               }
             }
-          ]
+          ],
+          "payload": {
+              "google": {
+                "expectUserResponse": true,
+                "richResponse": {
+                  "items": [
+                    {
+                      "simpleResponse": {
+                        "textToSpeech": "this is a Google Assistant response"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
         }
         res.json(response)
       }else{
@@ -49,6 +63,20 @@ app.post('/book',async (req,res)=>{
               }
             }
           ],
+          "payload": {
+              "google": {
+                "expectUserResponse": true,
+                "richResponse": {
+                  "items": [
+                    {
+                      "simpleResponse": {
+                        "textToSpeech": "this is a Google Assistant response"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
           "outputContexts": req.body.queryResult.outputContexts
         }
         res.json(response)
