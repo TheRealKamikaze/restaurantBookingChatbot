@@ -18,9 +18,9 @@ app.post('/book',async (req,res)=>{
     let date = req.body.queryResult.parameters.date;
     let pos = req.body.queryResult.parameters.date.indexOf('T');
     let saveDate = date.substring(0,pos);
-    let time = req.body.queryResult.parameters.time;
-    let startPos = req.body.queryResult.parameters.time.indexOf('T')+1;
-    let endPos = req.body.queryResult.parameters.time.indexOf('+');
+    let time = req.body.queryResult.parameters.time[0];
+    let startPos = time.indexOf('T')+1;
+    let endPos = time.indexOf('+');
     let saveTime = time.substring(startPos,endPos);
     let isAvailable = await booking.findOne({dateTime: saveDate + " "+ saveTime});
     // console.log(isAvailable);
