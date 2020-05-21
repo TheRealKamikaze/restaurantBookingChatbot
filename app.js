@@ -70,7 +70,7 @@ app.post('/book',async (req,res)=>{
       guests: 3
     }
     let booked = await booking.create(addBooking);
-    console.log(err);
+    console.log(booked)
     let response = {
       "fulfillmentMessages": [
         {
