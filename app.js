@@ -56,12 +56,11 @@ app.post('/book',async (req,res)=>{
     }else if(req.body.queryResult.intent.displayName==='bookTable - yes'){
       console.log(req.body.queryResult);
       let contexts = req.body.queryResult.outputContexts;
-      let index = -1;
-      contexts.forEach((context)=>{
-        let parts = context.name.split('/');
-        console.log(parts[parts.length-1]);
+      let index = contexts.findIndex((context)=>{
+        let someParts = context.name.split('/');
+        return someParts[someParts.length-1] === 'getname'
       })
-      // console.log(index)
+      console.log(index)
       let name = contexts[index].parameters.name;
       let date = contexts[index].parameters.date;
       let time = contexts[index].parameters.time[0];
