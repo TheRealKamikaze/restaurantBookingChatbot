@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://tarun:QyDqfwsy7sulkeIo@cluster0-a0vpp.mongodb.ne
 })
 
 app.post('/book',async (req,res)=>{
-  console.log(req.body);
+  console.log(req.body.queryResult.outputContexts);
   res.json({
     "status": "received"
   })
