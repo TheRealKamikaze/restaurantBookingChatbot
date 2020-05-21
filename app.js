@@ -14,7 +14,7 @@ app.post('/book',async (req,res)=>{
   try{
     // console.log(req.body.queryResult);
     // console.log(req.body.queryResult.outputContexts)
-    if(req.body.queryResult.intent.displayName==='getname'){
+    if(req.body.queryResult.intent.displayName==='getName'){
         let name = req.body.queryResult.parameters.name;
         let session = req.body.session.split("/");
         let sessionId = session[session.length-1];
