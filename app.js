@@ -57,9 +57,20 @@ app.post('/book',async (req,res)=>{
     let contexts = req.body.queryResult.outputContexts;
     let name = contexts[0].parameters.name;
     let date = contexts[0].parameters.date;
-    let time = contexts[0].parameters.time;
+    let time = contexts[0].parameters.time[0];
     let guests = contexts[0].parameters.number;
-    console.log(time)
+    let pos = req.body.queryResult.parameters.date.indexOf('T');
+    let saveDate = date.substring(0,pos);
+    let startPos = time.indexOf('T')+1;
+    let endPos = time.indexOf('+');
+    let saveTime = time.substring(startPos,endPos);
+    let addBooking = {
+      name: name,
+      dateTime: saveDate + " " + saveTime,
+      guests: 3
+    }
+    let booked = await booking.create(addBooking);
+    console.log(err);
     let response = {
       "fulfillmentMessages": [
         {
@@ -73,7 +84,9 @@ app.post('/book',async (req,res)=>{
     }
     res.json(response)
   }
-})
+}.catch((err)=>{
+  console.log(err);
+}))
 
 app.get('/',(req,res)=>{
   res.send('no content here');
