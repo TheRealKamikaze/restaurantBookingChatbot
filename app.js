@@ -54,7 +54,12 @@ app.post('/book',async (req,res)=>{
     }
   }else if(req.body.queryResult.intent.displayName==='bookTable - yes'){
     console.log(req.body.queryResult);
-    console.log(req.body.queryResult.outputContexts);
+    let contexts = req.body.queryResult.outputContexts;
+    let name = contexts[0].parameters.name;
+    let date = contexts[0].parameters.date;
+    let time = contexts[0].parameters.time;
+    let guests = contexts[0].parameters.number;
+    console.log(time)
     let response = {
       "fulfillmentMessages": [
         {
