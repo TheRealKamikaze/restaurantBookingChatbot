@@ -55,6 +55,6 @@ app.get('/',(req,res)=>{
   res.send('no content here');
 })
 
-app.listen(process.env.PORT,process.env.IP,()=>{
+app.listen(3000,()=>{
   console.log('restro-booking!!!');
 })
