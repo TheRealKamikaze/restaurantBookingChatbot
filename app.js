@@ -57,7 +57,7 @@ app.post('/book',async (req,res)=>{
       console.log(req.body.queryResult);
       let contexts = req.body.queryResult.outputContexts;
       let index = contexts.findIndex((context)=>{
-        let someParts = context.split('/');
+        let someParts = context.name.split('/');
         return someParts[someParts.length-1] ==='getName'
       })
       let name = contexts[index].parameters.name;
