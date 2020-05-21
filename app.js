@@ -53,6 +53,7 @@ app.post('/book',async (req,res)=>{
               }
             }
         }
+        res.json(response)
     }else if(req.body.queryResult.intent.displayName==='bookTable'){
       // console.log('in')
       // console.log(req.body.queryResult.outputContexts)
