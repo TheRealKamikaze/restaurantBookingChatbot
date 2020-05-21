@@ -40,7 +40,7 @@ app.post('/book',async (req,res)=>{
                   "items": [
                     {
                       "simpleResponse": {
-                        "textToSpeech": "Booking confirmed, have a nice day."
+                        "textToSpeech": "Hello, " + name + ". How may I help you today?"
                       }
                     }
                   ],
