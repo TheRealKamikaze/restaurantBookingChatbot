@@ -28,7 +28,7 @@ app.post('/book',async (req,res)=>{
             {
               "text": {
                 "text": [
-                  "Booking confirmed, have a nice day."
+                  "Hello, "+name+" how may i help you today?"
                 ]
               }
             }
